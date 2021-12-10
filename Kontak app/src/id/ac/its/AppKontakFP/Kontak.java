@@ -103,7 +103,7 @@ public class Kontak extends JFrame {
 		jenisF.setColumns(10);
 		jenisF.setBounds(131, 199, 201, 23);
 		contentPane.add(jenisF);
-		
+		//end Afdhal
 		
 	}
 
