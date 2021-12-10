@@ -118,7 +118,59 @@ public class MainFrame {
 
 		
 		//frame membuat kontak baru
-		//Bagian Fakhri
+		panel = new JPanel();
+		panel.setVisible(false); //buat invisible sebelum dipencet buat kontak baru
+		panel.setBounds(22, 187, 424, 323);
+		frmJavaKontakApp.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel namaL = new JLabel("Nama");
+		namaL.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		namaL.setBounds(41, 112, 57, 23);
+		panel.add(namaL);
+		
+		nomerF = new JTextField();
+		nomerF.setBounds(125, 58, 201, 23);
+		panel.add(nomerF);
+		nomerF.setColumns(10);
+		
+		JLabel nomerL = new JLabel("No Telp");
+		nomerL.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		nomerL.setBounds(41, 56, 57, 23);
+		panel.add(nomerL);
+		
+		namaF = new JTextField();
+		namaF.setColumns(10);
+		namaF.setBounds(125, 114, 201, 23);
+		panel.add(namaF);
+		
+		JLabel orgL = new JLabel("Organisasi");
+		orgL.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		orgL.setBounds(41, 166, 70, 23);
+		panel.add(orgL);
+		
+		orgF = new JTextField();
+		orgF.setColumns(10);
+		orgF.setBounds(125, 170, 201, 23);
+		panel.add(orgF);
+		
+		JLabel jenisL = new JLabel("Jenis no");
+		jenisL.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		jenisL.setBounds(41, 220, 70, 23);
+		panel.add(jenisL);
+		
+		jenis_comboBox = new JComboBox();
+		jenis_comboBox.setBackground(Color.WHITE);
+		jenis_comboBox.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		jenis_comboBox.setModel(new DefaultComboBoxModel(new String[] {"Kerja", "Rumah", "Pribadi"}));
+		jenis_comboBox.setBounds(125, 225, 201, 21);
+		panel.add(jenis_comboBox);
+		
+		JButton buatB = new JButton("Buat Baru");
+		//Add actionlistener here
+		buatB.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		buatB.setBounds(144, 270, 136, 30);
+		panel.add(buatB);
 		
 		
 		createTableNew();//deklarasikan
