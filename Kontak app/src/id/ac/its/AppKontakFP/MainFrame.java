@@ -66,7 +66,7 @@ public class MainFrame {
 		initialize();
 	}
 	
-	//buat fungsi membuat tabel di database yg sudah terhubung
+	//buat fungsi membuat tabel di database yg sudah terhubung - Rizaldi
 	public void createTableNew() {
 		try {
 			DatabaseMetaData dmd = connection.getMetaData();
@@ -97,7 +97,7 @@ public class MainFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		try {//koneksikan ke server database H2
+		try {//koneksikan ke server database H2 - Rizaldi
 			Class.forName("org.h2.Driver");
 			connection= DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
 			
@@ -107,15 +107,21 @@ public class MainFrame {
 			e1.printStackTrace();
 		}
 		
-		//Frame utama
+		//Frame utama - Rizaldi
 		frmJavaKontakApp = new JFrame();
 		frmJavaKontakApp.setTitle("Java Kontak app sederhana");
 		frmJavaKontakApp.setBounds(100, 100, 1000, 600);
 		frmJavaKontakApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmJavaKontakApp.getContentPane().setLayout(null);
 		
+		//Bagian Aqil - membuat interface dalam panel
 		JButton btnBuatBaru = new JButton("Buat kontak baru");
-		//Add action listener here
+		//Add action listener here - menampilkan panel buat kontak baru ketika diklik - Rizaldi
+		btnBuatBaru.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel.setVisible(true);
+			}
+		});//end Rizaldi
 		btnBuatBaru.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnBuatBaru.setBounds(105, 101, 251, 76);
 		frmJavaKontakApp.getContentPane().add(btnBuatBaru);
@@ -135,18 +141,60 @@ public class MainFrame {
 		
 		kontak = new Kontak();
 		JButton cariBtn = new JButton("Cari");
-		//Add action listener here
+		//Add action listener here - mengambil data dari sql dan;
+		// memasukkan ke field dalam objek kontak
+		//Bagian rizaldi
+		cariBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//memastikan user pw ada di database sblm login				
+				try {
+					String fetch= "select * from KONTAK where nama= ? or notelp=?";
+					PreparedStatement statement= connection.prepareStatement(fetch);
+					statement.setString(1, cariF.getText());
+					statement.setString(2, cariF.getText());
+					
+					ResultSet set= statement.executeQuery(); 
+					
+					if(set.next())//memeriksa sekali
+					{
+						JOptionPane.showMessageDialog(null, "Kontak ditemukan");
+						
+						kontak.nomerF.setText(set.getString("NOTELP"));
+						kontak.namaF.setText(set.getString("NAMA"));
+						kontak.orgF.setText(set.getString("ORGANISASI"));
+						kontak.jenisF.setText(set.getString("JENISNO"));
+						
+						kontak.setVisible(true); //meanmpilkan
+						
+					}else {
+						JOptionPane.showMessageDialog(null, "Kontak tidak ada");
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});//end rizaldi
+		
+		
 		cariBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		cariBtn.setBounds(693, 251, 131, 33);
 		frmJavaKontakApp.getContentPane().add(cariBtn);
 		
 		aboutBtn = new JButton("About Page");
-		//Add actionlistener here
+		//Add actionlistener here - menampilkan halaman about - Rizaldi
+		aboutBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new AboutPage().setVisible(true);
+			}
+		});//end rizaldi
 		aboutBtn.setBounds(22, 520, 105, 33);
 		frmJavaKontakApp.getContentPane().add(aboutBtn);
+		//end bagian Aqil
 
 		
 		//frame membuat kontak baru
+		//Bagian Fakhri - membuat panel buat kontak baru dan interfacenya
 		panel = new JPanel();
 		panel.setVisible(false); //buat invisible sebelum dipencet buat kontak baru
 		panel.setBounds(22, 187, 424, 323);
@@ -196,12 +244,37 @@ public class MainFrame {
 		panel.add(jenis_comboBox);
 		
 		JButton buatB = new JButton("Buat Baru");
-		//Add actionlistener here
+		//Add actionlistener here - membuat daftar baru dan memasukkan ke database - RIzaldi
+		buatB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//input data baru (create account)
+				try {
+					String insert_data = "insert into KONTAK values(?,?,?,?)";
+					PreparedStatement statement = connection.prepareStatement(insert_data);
+					statement.setString(1, nomerF.getText());
+					statement.setString(2, namaF.getText());
+					statement.setString(3, orgF.getText());
+					statement.setString(4, (String)jenis_comboBox.getSelectedItem());
+					
+					int data_entered = statement.executeUpdate();
+					if(data_entered>0) {//success
+						JOptionPane.showMessageDialog(null, "Data berhasil dimasukkan");
+					}
+					
+					
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "Gagal dimasukkan");
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});//end Rizaldi
 		buatB.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		buatB.setBounds(144, 270, 136, 30);
 		panel.add(buatB);
+		//end bagian fakhri
 		
-		
-		createTableNew();//deklarasikan
+		//deklarasikan - Rizaldi
+		createTableNew();
 	}
 }
