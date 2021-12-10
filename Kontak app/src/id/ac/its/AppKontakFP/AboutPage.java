@@ -47,6 +47,28 @@ public class AboutPage extends JFrame {
 		contentPane.setLayout(null);
 		
 		//Bagian Afdhal
-
+		//membuat interface dan isi halaman about
+		JLabel lblNewLabel = new JLabel("About this app");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setBounds(246, 10, 98, 37);
+		contentPane.add(lblNewLabel);
+		
+		JTextArea txtrAplikasiKontakTelepoon = new JTextArea();
+		txtrAplikasiKontakTelepoon.setEditable(false);
+		txtrAplikasiKontakTelepoon.setBackground(UIManager.getColor("Button.background"));
+		txtrAplikasiKontakTelepoon.setLineWrap(true);
+		txtrAplikasiKontakTelepoon.setWrapStyleWord(true);
+		txtrAplikasiKontakTelepoon.setText("Aplikasi kontak telepoon sederhana. \r\n"
+				+ "User bisa melakukan operasi dasar sepeti membuat daftar kontak baru "
+				+ "dan mencari kontak yang sudah ada berdasarkan nama atau nomor telepon.\r\n\r\n"
+				+ "Dibuat untuk Final Project PBO F Semester Gasal 2021.\r\n\r\n"
+				+ "Dibuat oleh kelompok 7 : \r\n"
+				+ "- Rizaldi Nur Rahman Naufal 05111940000201\r\n"
+				+ "- Afdhal Maruf Lukman 05111940007001\r\n"
+				+ "- Moh. Ilham Fakhri Zamzami 5025201275\r\n"
+				+ "- Aqil Ramadhan Hadiono 5025201261");
+		txtrAplikasiKontakTelepoon.setBounds(8, 57, 556, 206);
+		contentPane.add(txtrAplikasiKontakTelepoon);
+		//end bagian afdhal
 	}
 }
