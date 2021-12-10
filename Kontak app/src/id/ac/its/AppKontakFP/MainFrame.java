@@ -114,7 +114,36 @@ public class MainFrame {
 		frmJavaKontakApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmJavaKontakApp.getContentPane().setLayout(null);
 		
-		//Bagian Aqil
+		JButton btnBuatBaru = new JButton("Buat kontak baru");
+		//Add action listener here
+		btnBuatBaru.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnBuatBaru.setBounds(105, 101, 251, 76);
+		frmJavaKontakApp.getContentPane().add(btnBuatBaru);
+		
+		JLabel judulCari = new JLabel("Cari kontak yang sudah ada");
+		judulCari.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		judulCari.setBounds(605, 85, 298, 67);
+		frmJavaKontakApp.getContentPane().add(judulCari);
+		
+		cariF = new JTextField();
+		cariF.setForeground(Color.BLACK);
+		cariF.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		cariF.setText("Masukkan nama/telp");
+		cariF.setBounds(605, 197, 298, 33);
+		frmJavaKontakApp.getContentPane().add(cariF);
+		cariF.setColumns(10);
+		
+		kontak = new Kontak();
+		JButton cariBtn = new JButton("Cari");
+		//Add action listener here
+		cariBtn.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		cariBtn.setBounds(693, 251, 131, 33);
+		frmJavaKontakApp.getContentPane().add(cariBtn);
+		
+		aboutBtn = new JButton("About Page");
+		//Add actionlistener here
+		aboutBtn.setBounds(22, 520, 105, 33);
+		frmJavaKontakApp.getContentPane().add(aboutBtn);
 
 		
 		//frame membuat kontak baru
