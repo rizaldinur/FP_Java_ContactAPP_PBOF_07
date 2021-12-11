@@ -4,3 +4,5 @@
 - Afdhal Maruf Lukman 05111940007001
 - Moh. Ilham Fakhri Zamzami 5025201275
 - Aqil Ramadhan Hadiono 5025201261
+
+Download zip [disini](https://drive.google.com/uc?export=download&id=1wqs4wksDfbQZ47--kWnwDKJN2GOKaZhM)
