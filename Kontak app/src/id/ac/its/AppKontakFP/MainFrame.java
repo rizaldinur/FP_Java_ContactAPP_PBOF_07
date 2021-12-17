@@ -1,7 +1,6 @@
 package id.ac.its.AppKontakFP;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -10,7 +9,6 @@ import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import java.awt.Window.Type;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -19,14 +17,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextPane;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
-import javax.swing.DropMode;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 //import id.ac.its.AppKontakFP.Kontak;
 
@@ -39,9 +33,9 @@ public class MainFrame {
 	private JTextField namaF;
 	private JTextField orgF;
 	private JPanel panel;
-	private JComboBox jenis_comboBox;
+	private JComboBox<String> jenis_comboBox;
 	private Kontak kontak;
-	Connection connection= null;//buat koneksi dg h2 DB
+	private Connection connection= null;//buat koneksi dg h2 DB
 	private JButton aboutBtn;
 	/**
 	 * Launch the application.
@@ -104,6 +98,7 @@ public class MainFrame {
 			JOptionPane.showMessageDialog(null, "Berhasil Terhubung");
 		} catch (ClassNotFoundException | SQLException e1) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "Gagal Terhubung, tutup aplikasi yang sedang running", null, JOptionPane.ERROR_MESSAGE );
 			e1.printStackTrace();
 		}
 		
@@ -141,6 +136,44 @@ public class MainFrame {
 		
 		kontak = new Kontak();
 		JButton cariBtn = new JButton("Cari");
+		//Add action listener here - mengambil data dari sql dan;
+		// memasukkan ke field dalam objek kontak ketika tekan "Enter" pada tombol
+		//Bagian rizaldi
+		cariBtn.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					try {
+						String fetch= "select * from KONTAK where nama= ? or notelp=?";
+						PreparedStatement statement= connection.prepareStatement(fetch);
+						statement.setString(1, cariF.getText());
+						statement.setString(2, cariF.getText());
+						
+						ResultSet set= statement.executeQuery(); 
+						
+						if(set.next())//memeriksa sekali
+						{
+							JOptionPane.showMessageDialog(null, "Kontak ditemukan");
+							
+							kontak.nomerF.setText(set.getString("NOTELP"));
+							kontak.namaF.setText(set.getString("NAMA"));
+							kontak.orgF.setText(set.getString("ORGANISASI"));
+							kontak.jenisF.setText(set.getString("JENISNO"));
+							
+							kontak.setVisible(true); //meanmpilkan
+							
+						}else {
+							JOptionPane.showMessageDialog(null, "Kontak tidak ada");
+						}
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		//End Rizaldi
+		
 		//Add action listener here - mengambil data dari sql dan;
 		// memasukkan ke field dalam objek kontak
 		//Bagian rizaldi
@@ -236,7 +269,7 @@ public class MainFrame {
 		jenisL.setBounds(41, 220, 70, 23);
 		panel.add(jenisL);
 		
-		jenis_comboBox = new JComboBox();
+		jenis_comboBox = new JComboBox<String>();
 		jenis_comboBox.setBackground(Color.WHITE);
 		jenis_comboBox.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		jenis_comboBox.setModel(new DefaultComboBoxModel(new String[] {"Kerja", "Rumah", "Pribadi"}));
