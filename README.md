@@ -10,5 +10,9 @@
    operasi load data yakni mencari kontak yang sudah ada berdasarkan nomor telepon atau nama kontaknya.
       Referensi yang digunakan merupakan aplikasi billing sederhana. Dari referensi itu, kami modifikasi sedemikian rupa agar sesuai dengan kebutuhan aplikasi kontak telepon. 
 
+2. Tools yang digunakan   
+      Proses pembuatan interface dan kodingan menggunakan software Eclipse IDE dengan tools WindowBuilder yang sudah diinstall di dalamnya. Untuk menyimpan data, digunakan H2 Java 
+   SQL Database dengan pertimbangan tools tersebut mudah digunakan dan ringan. Pastikan user terlebih dahulu menginstall H2 database sebelum menjalankan aplikasi ini. Setelah 
+   menginstall Database, silahkan import tools jdbc tersebut ke dalam package aplikasi.
 
 Download zip [disini](https://drive.google.com/uc?export=download&id=1GmqLXqQ4r0tzH6wGl_hNU264aleHhH6n)
