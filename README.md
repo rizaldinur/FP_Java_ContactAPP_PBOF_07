@@ -23,9 +23,9 @@
 4. Alur Pembuatan Aplikasi
       1) Membuat halaman menu utama dalam Class MainFrame yang terdiri dari interface buat kontak baru , interface cari kontak, serta tombol halaman about. GUI dan segala
          actionnya diletakkan dalam fungsi initialize().
-            -Buat terlebih dahulu frame utama sebagai wadah untuk interface yang selainnya, beri judul “Java Kontak app sederhana”. Gunakan layout absolute agar fleksibel dalam 
-             menaruh GUI nya. Gunakan actionListener terhadap tombol “Buat kontak baru”.
-            -Buat panel baru yang berisikan label, field, dan tombol, untuk menginput data kontak baru.
+            - Buat terlebih dahulu frame utama sebagai wadah untuk interface yang selainnya, beri judul “Java Kontak app sederhana”. Gunakan layout absolute agar fleksibel
+              dalam menaruh GUI nya. Gunakan actionListener terhadap tombol “Buat kontak baru”.
+            - Buat panel baru yang berisikan label, field, dan tombol, untuk menginput data kontak baru.
             -Buat label “Cari kontak”, field untuk mencari kontak, tombol “cari”, tombol “buat kontak”, dan tombol “about page”.
             -Pastikan panel daftar kontak baru agar tidak kelihatan sebelum diklik tombol “Buat kontak baru”.
       2) Hubungkan MainFrame dengan H2 database
