@@ -5,4 +5,4 @@
 - Moh. Ilham Fakhri Zamzami 5025201275
 - Aqil Ramadhan Hadiono 5025201261
 
-Download zip [disini](https://drive.google.com/uc?export=download&id=1wqs4wksDfbQZ47--kWnwDKJN2GOKaZhM)
+Download zip [disini](https://drive.google.com/uc?export=download&id=1GmqLXqQ4r0tzH6wGl_hNU264aleHhH6n)
