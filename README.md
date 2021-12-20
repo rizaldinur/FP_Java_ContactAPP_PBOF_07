@@ -14,5 +14,10 @@
       Proses pembuatan interface dan kodingan menggunakan software Eclipse IDE dengan tools WindowBuilder yang sudah diinstall di dalamnya. Untuk menyimpan data, digunakan H2 Java 
    SQL Database dengan pertimbangan tools tersebut mudah digunakan dan ringan. Pastikan user terlebih dahulu menginstall H2 database sebelum menjalankan aplikasi ini. Setelah 
    menginstall Database, silahkan import tools jdbc tersebut ke dalam package aplikasi.
+   
+3. Diagram Kelas
+      Kelas MainFrame adalah kelas yang digunakan untuk menampilkan halaman utama. Kelas Kontak adalah kelas yang akan digunakan sebagai objek frame Kontak yang akan pop-up/muncul    ketika pencarian suatu kontak ditemukan. Kelas AboutPage adalah frame yang akan muncul ketika user mengklik tombol “AboutPage” pada halaman utama (MainFrame). Kelas Kontak dan 
+   AboutPage memiliki hubungan composition terhadap MainFrame. Artinya, apabila MainFrame hilang, maka keduanya juga hilang.
+
 
 Download zip [disini](https://drive.google.com/uc?export=download&id=1GmqLXqQ4r0tzH6wGl_hNU264aleHhH6n)
