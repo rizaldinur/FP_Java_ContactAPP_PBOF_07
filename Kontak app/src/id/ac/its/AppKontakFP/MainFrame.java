@@ -309,6 +309,7 @@ public class MainFrame {
 		//end bagian fakhri
 		
 		//deklarasikan 
+		createTableNew();
 		
 	}
 }
