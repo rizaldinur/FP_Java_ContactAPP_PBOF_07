@@ -277,7 +277,31 @@ public class MainFrame {
 		panel.add(jenis_comboBox);
 		
 		JButton buatB = new JButton("Buat Baru");
-		//Add actionlistener here - membuat daftar baru dan memasukkan ke database
+		//Add actionlistener here - membuat daftar baru dan memasukkan ke database - Fakhri
+		buatB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//input data baru (create account)
+				try {
+					String insert_data = "insert into KONTAK values(?,?,?,?)";
+					PreparedStatement statement = connection.prepareStatement(insert_data);
+					statement.setString(1, nomerF.getText());
+					statement.setString(2, namaF.getText());
+					statement.setString(3, orgF.getText());
+					statement.setString(4, (String)jenis_comboBox.getSelectedItem());
+					
+					int data_entered = statement.executeUpdate();
+					if(data_entered>0) {//success
+						JOptionPane.showMessageDialog(null, "Data berhasil dimasukkan");
+					}
+					
+					
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "Gagal dimasukkan");
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 		buatB.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		buatB.setBounds(144, 270, 136, 30);
