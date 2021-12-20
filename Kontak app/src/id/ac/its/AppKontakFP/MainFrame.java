@@ -111,12 +111,8 @@ public class MainFrame {
 		
 		//Bagian Aqil - membuat interface dalam panel
 		JButton btnBuatBaru = new JButton("Buat kontak baru");
-		//Add action listener here - menampilkan panel buat kontak baru ketika diklik - Rizaldi
-		btnBuatBaru.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panel.setVisible(true);
-			}
-		});//end Rizaldi
+		//Add action listener here - menampilkan panel buat kontak baru ketika diklik - 
+		
 		btnBuatBaru.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnBuatBaru.setBounds(105, 101, 251, 76);
 		frmJavaKontakApp.getContentPane().add(btnBuatBaru);
@@ -138,41 +134,7 @@ public class MainFrame {
 		JButton cariBtn = new JButton("Cari");
 		//Add action listener here - mengambil data dari sql dan;
 		// memasukkan ke field dalam objek kontak ketika tekan "Enter" pada tombol
-		//Bagian rizaldi
-		cariBtn.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode()==KeyEvent.VK_ENTER){
-					try {
-						String fetch= "select * from KONTAK where nama= ? or notelp=?";
-						PreparedStatement statement= connection.prepareStatement(fetch);
-						statement.setString(1, cariF.getText());
-						statement.setString(2, cariF.getText());
-						
-						ResultSet set= statement.executeQuery(); 
-						
-						if(set.next())//memeriksa sekali
-						{
-							JOptionPane.showMessageDialog(null, "Kontak ditemukan");
-							
-							kontak.nomerF.setText(set.getString("NOTELP"));
-							kontak.namaF.setText(set.getString("NAMA"));
-							kontak.orgF.setText(set.getString("ORGANISASI"));
-							kontak.jenisF.setText(set.getString("JENISNO"));
-							
-							kontak.setVisible(true); //meanmpilkan
-							
-						}else {
-							JOptionPane.showMessageDialog(null, "Kontak tidak ada");
-						}
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			}
-		});
-		//End Rizaldi
+		
 		
 		//Add action listener here - mengambil data dari sql dan;
 		// memasukkan ke field dalam objek kontak
