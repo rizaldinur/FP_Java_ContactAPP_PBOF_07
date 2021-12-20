@@ -91,16 +91,7 @@ public class MainFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		try {//koneksikan ke server database H2 - Rizaldi
-			Class.forName("org.h2.Driver");
-			connection= DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
-			
-			JOptionPane.showMessageDialog(null, "Berhasil Terhubung");
-		} catch (ClassNotFoundException | SQLException e1) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null, "Gagal Terhubung, tutup aplikasi yang sedang running", null, JOptionPane.ERROR_MESSAGE );
-			e1.printStackTrace();
-		}
+		
 		
 		//Frame utama - Rizaldi
 		frmJavaKontakApp = new JFrame();
