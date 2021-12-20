@@ -20,7 +20,8 @@
    pop-up/muncul ketika pencarian suatu kontak ditemukan. Kelas AboutPage adalah frame yang akan muncul ketika user mengklik tombol “AboutPage” pada halaman utama
    (MainFrame). Kelas Kontak dan AboutPage memiliki hubungan composition terhadap MainFrame. Artinya, apabila MainFrame hilang, maka keduanya juga hilang.
    
-4. Alur Pembuatan Aplikasi1) Membuat halaman menu utama dalam Class MainFrame yang terdiri dari interface buat kontak baru , interface cari kontak, serta tombol halaman about. GUI dan segala
+4. Alur Pembuatan Aplikasi
+      1) Membuat halaman menu utama dalam Class MainFrame yang terdiri dari interface buat kontak baru , interface cari kontak, serta tombol halaman about. GUI dan segala
          actionnya diletakkan dalam fungsi initialize().
             - Buat terlebih dahulu frame utama sebagai wadah untuk interface yang selainnya, beri judul “Java Kontak app sederhana”. Gunakan layout absolute agar fleksibel
               dalam menaruh GUI nya. Gunakan actionListener terhadap tombol “Buat kontak baru”.
